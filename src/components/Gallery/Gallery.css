@@ -1,0 +1,276 @@
+/* ============================================================
+   EDITORIAL 3D SCROLL GALLERY — E-CELL RCPIT
+   ============================================================ */
+
+.ecell-gallery {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f172a;
+  margin: 0;
+  padding: 0;
+  clear: both;
+  font-family: var(--font-sans, "Inter", sans-serif);
+}
+
+/* Refined Editorial Heading */
+.ecell-gallery__header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 72px 20px 44px;
+  animation: ecellFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ecell-gallery__eyebrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ecell-gallery__eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-primary-green, #16A34A);
+}
+
+.ecell-gallery__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary-green, #16A34A);
+}
+
+.ecell-gallery__title {
+  font-size: clamp(2.3rem, 4.2vw, 3.3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+  color: #0f172a;
+  margin: 0 0 12px;
+}
+
+.ecell-gallery__subtext {
+  font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+  line-height: 1.55;
+  color: #4b5563;
+  margin: 0 auto;
+  max-width: 520px;
+}
+
+/* Subtle Header Entrance Animation */
+@keyframes ecellFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Container (260vh for responsive, crisp pacing) */
+.ecell-gallery__scroll {
+  position: relative;
+  width: 100%;
+  height: 260vh;
+}
+
+/* Sticky Viewport (100vh Pinned strictly within gallery section) */
+.ecell-gallery__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+/* 3D Perspective Grid Wrapper */
+.ecell-gallery__grid-wrapper {
+  position: relative;
+  width: min(1480px, 94vw);
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  perspective-origin: 50% 48%;
+}
+
+/* 3-Column Photographic Grid */
+.ecell-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr 1fr;
+  gap: 10px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Parallax Columns */
+.ecell-gallery__column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Column Starting Offsets */
+.ecell-gallery__column--left {
+  margin-top: 0px;
+}
+
+.ecell-gallery__column--center {
+  margin-top: -24%;
+  z-index: 2;
+}
+
+.ecell-gallery__column--right {
+  margin-top: 36px;
+}
+
+/* Photographic Panels (16:10 Ratio, 8px Radius, Soft Shadow) */
+.ecell-gallery__item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Desktop Subtle Hover */
+@media (hover: hover) {
+  .ecell-gallery__item:hover {
+    transform: scale(1.012);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.14);
+  }
+}
+
+/* Image Fill */
+.ecell-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Minimal Editorial Pagination Indicator */
+.ecell-gallery__pagination {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ecell-gallery__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ecell-gallery__dot.is-active {
+  width: 18px;
+  border-radius: 999px;
+  background-color: #0f172a;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .ecell-gallery__header {
+    padding: 56px 16px 36px;
+  }
+
+  .ecell-gallery__grid-wrapper {
+    width: 96vw;
+    height: 84vh;
+    perspective: 900px;
+  }
+
+  .ecell-gallery__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .ecell-gallery__column {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecell-gallery__header {
+    padding: 44px 14px 28px;
+  }
+
+  .ecell-gallery__grid-wrapper {
+    width: 96vw;
+    height: 82vh;
+    perspective: 800px;
+  }
+
+  .ecell-gallery__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .ecell-gallery__column {
+    gap: 6px;
+  }
+
+  .ecell-gallery__column--right {
+    display: none; /* Clean 2-column mobile layout */
+  }
+
+  .ecell-gallery__column--center {
+    margin-top: 10px;
+  }
+
+  .ecell-gallery__item {
+    border-radius: 6px;
+  }
+
+  .ecell-gallery__pagination {
+    bottom: 16px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ecell-gallery__header {
+    animation: none !important;
+  }
+  .ecell-gallery__grid,
+  .ecell-gallery__column {
+    transform: none !important;
+  }
+  .ecell-gallery__scroll {
+    height: auto !important;
+  }
+  .ecell-gallery__sticky {
+    position: relative !important;
+    height: auto !important;
+    padding: 60px 0;
+  }
+}

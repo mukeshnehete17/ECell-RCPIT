@@ -1,0 +1,200 @@
+/* ============================================================
+   HERO SECTION — EDITORIAL PHOTOGRAPHIC COVER
+   ============================================================ */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Fallback */
+  height: 100svh;
+  min-height: 100vh; /* Fallback */
+  min-height: 100svh;
+  background-color: #0c0e12;
+  overflow: hidden;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  user-select: none;
+  /* Scroll-linked exit progress (0 → 1), driven by Hero.jsx */
+  --hero-exit: 0;
+}
+
+/* Real E-Cell RCPIT Team Photograph: Natural, Crisp & Vibrant.
+   Faces sit ~35–50% height, QR boxes ~70–89%: 50% 30% keeps both visible. */
+.hero-bg-photo {
+  position: absolute;
+  top: -48px;
+  bottom: -48px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  /* Subtle scroll-linked exit drift (composes with the scale drift below) */
+  translate: 0 calc(var(--hero-exit, 0) * -32px);
+  animation: heroPhotoSubtleDrift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroPhotoSubtleDrift {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-bg-photo {
+    background-position: 50% 25%;
+  }
+}
+
+/* Subtle Top Readability Vignette — Only behind the typography, leaving team faces natural */
+.hero-text-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 16, 0.65) 0%,
+    rgba(10, 12, 16, 0.35) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero Content Area: vertically centered over the full-height photo,
+   with bottom breathing room so type sits clear of the exit transition */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 24px 132px;
+  text-align: center;
+  /* Subtle scroll-linked exit (composes with the load entrance below) */
+  translate: 0 calc(var(--hero-exit, 0) * -18px);
+  opacity: calc(1 - var(--hero-exit, 0) * 0.12);
+  animation: heroContentFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes heroContentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Primary Title: Crisp White Editorial Typography */
+.hero-title {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+}
+
+.hero-title-main {
+  display: block;
+  font-size: clamp(2rem, 4.2vw, 3.5rem);
+  text-transform: uppercase;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.hero-title-sub {
+  display: block;
+  font-size: clamp(1.4rem, 2.8vw, 2.25rem);
+  color: #ffffff;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* Subtitle: Clean Supporting Line */
+.hero-subtitle {
+  margin-top: 12px;
+  font-size: clamp(0.85rem, 1.25vw, 0.98rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Short localized photo-to-white exit transition (120px max).
+   Mostly transparent — solid white only at the very edge. */
+.hero-bottom-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 45%,
+    rgba(255, 255, 255, 0.5) 78%,
+    #ffffff 100%
+  );
+  pointer-events: none;
+}
+
+/* Single restrained brand tick integrated into the transition edge */
+.hero-bottom-accent {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(22, 163, 74, 0.5) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    padding: 16px 16px 108px;
+  }
+
+  .hero-bottom-fade {
+    height: 90px;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-photo,
+  .hero-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
+  }
+}
