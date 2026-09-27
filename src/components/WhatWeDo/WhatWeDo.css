@@ -1,0 +1,621 @@
+/* ============================================================
+   WHAT WE DO — EDITORIAL ASYMMETRIC REFERENCE COMPOSITION
+   ============================================================ */
+
+.what-we-do-section {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f172a;
+  padding: 92px 24px 104px;
+  overflow: hidden;
+  font-family: var(--font-sans, "Inter", sans-serif);
+}
+
+.what-we-do-container {
+  width: min(94%, 1280px);
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================================
+   1. SECTION HEADER
+   ============================================================ */
+
+.what-we-do-header {
+  max-width: 720px;
+  margin: 0 auto 52px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.what-we-do-section.is-visible .what-we-do-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.what-we-do-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.what-we-do-eyebrow-line {
+  width: 24px;
+  height: 1.5px;
+  background-color: #cbd5e1;
+  margin: 8px auto 14px;
+}
+
+.what-we-do-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  margin: 0 0 16px;
+}
+
+.what-we-do-desc {
+  font-size: clamp(0.92rem, 1.25vw, 1.02rem);
+  line-height: 1.62;
+  color: #475569;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   2. MAIN DEDICATED COMPOSITION CONTAINER (DESKTOP)
+   ============================================================ */
+
+.what-we-do-composition {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 560px;
+  margin: 0 auto 60px;
+}
+
+/* Subtle SVG Orbital & Connection Pathways */
+.what-orbital-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.what-orbital-path {
+  stroke: #cbd5e1;
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.85;
+}
+
+/* ============================================================
+   3. FOUR ASYMMETRIC IMAGE PANELS & TILT ROTATIONS
+   ============================================================ */
+
+.what-panel {
+  position: absolute;
+  z-index: 2;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.what-panel-card {
+  width: 380px;
+  height: 215px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #0f172a;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.12),
+              0 2px 8px -2px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.what-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Panel Rotations & Exact Placement */
+.what-panel--ideas {
+  top: 12px;
+  left: 12px;
+}
+.what-panel--ideas .what-panel-card {
+  transform: rotate(-2deg);
+}
+
+.what-panel--startups {
+  top: 12px;
+  right: 12px;
+}
+.what-panel--startups .what-panel-card {
+  transform: rotate(1.5deg);
+}
+
+.what-panel--mentorship {
+  bottom: 20px;
+  left: 60px;
+}
+.what-panel--mentorship .what-panel-card {
+  transform: rotate(1.5deg);
+}
+
+.what-panel--collaboration {
+  bottom: 20px;
+  right: 60px;
+}
+.what-panel--collaboration .what-panel-card {
+  transform: rotate(-1.5deg);
+}
+
+/* Staggered Viewport Entrance */
+.what-we-do-section.is-visible .what-panel--ideas {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.what-we-do-section.is-visible .what-panel--startups {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.18s;
+}
+
+.what-we-do-section.is-visible .what-panel--mentorship {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.26s;
+}
+
+.what-we-do-section.is-visible .what-panel--collaboration {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.34s;
+}
+
+/* Subtle Hover Effects */
+.what-panel:hover .what-panel-card {
+  transform: scale(1.025) translateY(-2px);
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16);
+  border-color: rgba(203, 213, 225, 1);
+}
+
+.what-panel:hover .what-panel-img {
+  transform: scale(1.03);
+}
+
+.what-panel:hover .what-floating-badge {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.14);
+}
+
+/* ============================================================
+   4. FLOATING OVERLAPPING WHITE BADGE CARDS
+   ============================================================ */
+
+.what-floating-badge {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 13px 17px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 26px -3px rgba(15, 23, 42, 0.1),
+              0 3px 6px -1px rgba(15, 23, 42, 0.03);
+  z-index: 5;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease;
+}
+
+.what-floating-badge--ideas {
+  bottom: -18px;
+  left: -18px;
+  max-width: 250px;
+}
+
+.what-floating-badge--startups {
+  bottom: -18px;
+  right: -18px;
+  max-width: 260px;
+}
+
+.what-floating-badge--mentorship {
+  bottom: -18px;
+  left: -22px;
+  max-width: 260px;
+}
+
+.what-floating-badge--collaboration {
+  bottom: -18px;
+  right: -22px;
+  max-width: 280px;
+}
+
+.what-badge-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+.what-badge-num {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+}
+
+.what-badge-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.what-badge-desc {
+  font-size: 11.5px;
+  line-height: 1.42;
+  color: #475569;
+  margin: 0;
+}
+
+/* ============================================================
+   5. CENTRAL CIRCULAR VISUAL & ORBITAL NODES
+   ============================================================ */
+
+.what-center-visual {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.what-we-do-section.is-visible .what-center-visual {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.what-center-frame {
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #000000;
+  border: 3.5px solid #ffffff;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.2),
+              0 0 0 1px rgba(226, 232, 240, 0.9);
+  animation: whatCenterBreath 6s ease-in-out infinite;
+}
+
+.what-center-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 4 Minimal Node Circles */
+.what-node-circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  pointer-events: none;
+  animation: whatCenterBreath 6s ease-in-out infinite;
+}
+
+.what-node-circle--top-left {
+  top: -12px;
+  left: -22px;
+}
+
+.what-node-circle--top-right {
+  top: 10px;
+  right: -28px;
+}
+
+.what-node-circle--bottom-left {
+  bottom: 15px;
+  left: -28px;
+}
+
+.what-node-circle--bottom-right {
+  bottom: -10px;
+  right: -15px;
+}
+
+.what-node-icon {
+  width: 18px;
+  height: 18px;
+  color: #334155;
+}
+
+@keyframes whatCenterBreath {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ============================================================
+   6. STATS ROW
+   ============================================================ */
+
+.what-stats-row {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.what-we-do-section.is-visible .what-stats-row {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.what-stat-group {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.what-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.what-stat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+  shrink: 0;
+}
+
+.what-stat-icon {
+  width: 20px;
+  height: 20px;
+  color: #1e293b;
+}
+
+.what-stat-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.what-stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.what-stat-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.what-stat-separator {
+  width: 1px;
+  height: 36px;
+  background-color: #e2e8f0;
+}
+
+/* ============================================================
+   7. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+@media (max-width: 1180px) {
+  .what-we-do-composition {
+    max-width: 980px;
+    height: 520px;
+  }
+
+  .what-panel-card {
+    width: 310px;
+    height: 180px;
+  }
+
+  .what-center-frame {
+    width: 195px;
+    height: 195px;
+  }
+
+  .what-panel--ideas {
+    top: 10px;
+    left: 8px;
+  }
+
+  .what-panel--startups {
+    top: 10px;
+    right: 8px;
+  }
+
+  .what-panel--mentorship {
+    bottom: 15px;
+    left: 30px;
+  }
+
+  .what-panel--collaboration {
+    bottom: 15px;
+    right: 30px;
+  }
+
+  .what-floating-badge {
+    padding: 10px 14px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 860px) {
+  .what-we-do-section {
+    padding: 68px 16px 76px;
+  }
+
+  .what-we-do-header {
+    margin-bottom: 36px;
+  }
+
+  .what-orbital-svg {
+    display: none;
+  }
+
+  /* Clean Vertical Mobile Editorial Flow */
+  .what-we-do-composition {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 44px;
+  }
+
+  .what-center-visual {
+    position: static;
+    transform: none !important;
+    order: -1;
+    margin-bottom: 12px;
+  }
+
+  .what-node-circle {
+    display: none;
+  }
+
+  .what-center-frame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .what-panel {
+    position: static;
+    width: 100%;
+    max-width: 420px;
+    transform: none !important;
+  }
+
+  .what-panel-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    transform: none !important;
+  }
+
+  .what-floating-badge {
+    position: static;
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  /* 2-column mobile stats */
+  .what-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+    padding: 20px 16px;
+  }
+
+  .what-stat-group {
+    justify-content: flex-start;
+  }
+
+  .what-stat-card {
+    padding: 0;
+    margin: 0;
+  }
+
+  .what-stat-separator {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .what-stats-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================================================
+   8. ACCESSIBILITY: REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .what-we-do-header,
+  .what-center-visual,
+  .what-panel,
+  .what-stats-row,
+  .what-panel-card,
+  .what-panel-img,
+  .what-floating-badge,
+  .what-center-frame,
+  .what-node-circle {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

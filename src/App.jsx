@@ -2,8 +2,8 @@ import Navbar from './components/Navbar/Navbar';
 import SocialDock from './components/SocialDock/SocialDock';
 import Hero from './components/Hero/Hero';
 import Gallery from './components/Gallery/Gallery';
-import EcosystemCube from './components/EcosystemCube/EcosystemCube';
-import MomentsCoverflow from './components/MomentsCoverflow/MomentsCoverflow';
+import WhatWeDo from './components/WhatWeDo/WhatWeDo';
+import TeamCards from './components/TeamCards/TeamCards';
 
 export default function App() {
   return (
@@ -13,8 +13,8 @@ export default function App() {
       <main className="flex-1 flex flex-col">
         <Hero />
         <Gallery />
-        <EcosystemCube />
-        <MomentsCoverflow />
+        <WhatWeDo />
+        <TeamCards />
       </main>
     </div>
   );

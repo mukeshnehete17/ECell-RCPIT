@@ -1,5 +1,5 @@
 /* ============================================================
-   WHITE 3D COVERFLOW SHOWCASE — E-CELL RCPIT
+   WHITE 3D COVERFLOW SHOWCASE — E-CELL RCPIT (SCALABLE)
    ============================================================ */
 
 .ecell-showcase-carousel {
@@ -51,24 +51,33 @@
   position: relative;
   width: 100%;
   padding-top: 10px;
-  padding-bottom: 48px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ecell-coverflow-swiper {
   width: 100%;
-  padding-top: 24px;
-  padding-bottom: 36px;
+  padding-top: 28px;
+  padding-bottom: 40px;
   overflow: visible !important;
 }
 
-/* Slide Card Proportions */
+/* Slide Proportions & Center Focus */
 .ecell-coverflow-slide {
   width: 380px !important;
   height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  opacity: 0.72;
+}
+
+.ecell-coverflow-slide.swiper-slide-active {
+  opacity: 1;
+  z-index: 20 !important;
 }
 
 .ecell-coverflow-card {
@@ -78,10 +87,16 @@
   border-radius: 20px;
   overflow: hidden;
   background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   user-select: none;
+}
+
+.swiper-slide-active .ecell-coverflow-card {
+  border-color: rgba(22, 163, 74, 0.5);
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.18),
+              0 0 0 1.5px rgba(22, 163, 74, 0.3);
 }
 
 .ecell-coverflow-card img {
@@ -89,13 +104,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Active Center Card Highlight */
-.ecell-coverflow-card.is-active-card {
-  border-color: rgba(22, 163, 74, 0.45);
-  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16),
-              0 0 0 1px rgba(22, 163, 74, 0.25);
+.swiper-slide-active .ecell-coverflow-card img {
+  transform: scale(1.02);
 }
 
 /* Subtle Photographic Surface Sheen */
@@ -109,6 +122,43 @@
     transparent 65%
   );
   pointer-events: none;
+}
+
+/* Sleek Minimalist Manual Navigation Controls */
+.ecell-coverflow-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+  z-index: 10;
+}
+
+.ecell-coverflow-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ecell-coverflow-nav-btn:hover {
+  background-color: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+}
+
+.ecell-coverflow-nav-btn:active {
+  transform: scale(0.95);
 }
 
 /* Responsive Breakpoints */
@@ -143,5 +193,20 @@
 
   .ecell-coverflow-card {
     border-radius: 16px;
+  }
+
+  .ecell-coverflow-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ecell-coverflow-slide,
+  .ecell-coverflow-card,
+  .ecell-coverflow-card img,
+  .ecell-coverflow-nav-btn {
+    transition: none !important;
   }
 }
