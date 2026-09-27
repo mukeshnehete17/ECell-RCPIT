@@ -49,14 +49,13 @@ export default function Hero() {
       {/* Subtle Top Readability Vignette */}
       <div className="hero-text-vignette" aria-hidden="true" />
 
-      {/* Top Spacer for Fixed Navbar */}
-      <div className="w-full h-16 md:h-[68px] shrink-0" />
-
-      {/* Hero Typography Content: Positioned cleanly above team members */}
+      {/* Hero Typography Content: Positioned cleanly in architectural space above team members */}
       <div className="hero-content">
         <h1 className="hero-title">
-          <span className="hero-title-main">Entrepreneurship Cell</span>
-          <span className="hero-title-sub">RCPIT</span>
+          <span className="hero-title-main">Entrepreneurship Cell,</span>
+          <span className="hero-title-sub">
+            RCPIT
+          </span>
         </h1>
 
         <p className="hero-subtitle">

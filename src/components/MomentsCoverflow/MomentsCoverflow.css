@@ -26,25 +26,6 @@
   padding: 0 16px;
 }
 
-.ecell-showcase-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-primary-green, #16A34A);
-  margin-bottom: 12px;
-}
-
-.ecell-showcase-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--color-primary-green, #16A34A);
-}
-
 .ecell-showcase-title {
   font-size: clamp(2.1rem, 3.8vw, 3rem);
   font-weight: 800;
@@ -128,35 +109,6 @@
     transparent 65%
   );
   pointer-events: none;
-}
-
-/* Pagination Dots */
-.ecell-coverflow-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.ecell-coverflow-bullet {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  display: inline-block;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.ecell-coverflow-bullet:hover {
-  background-color: #94a3b8;
-}
-
-.ecell-coverflow-bullet-active {
-  width: 22px;
-  border-radius: 999px;
-  background-color: var(--color-primary-green, #16A34A) !important;
 }
 
 /* Responsive Breakpoints */

@@ -69,11 +69,6 @@ export default function SocialDock() {
             </div>
           </a>
         ))}
-
-        {/* Pulsing status beacon (Desktop) */}
-        <div className="hidden sm:flex py-0.5 items-center justify-center">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-pulse shadow-[0_0_8px_#16A34A]" />
-        </div>
       </div>
     </aside>
   );

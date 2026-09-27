@@ -181,10 +181,6 @@ export default function Gallery() {
     <section className="ecell-gallery" id="gallery">
       {/* Refined Editorial Heading */}
       <div className="ecell-gallery__header">
-        <div className="ecell-gallery__eyebrow-wrapper">
-          <span className="ecell-gallery__eyebrow-dot" />
-          <span className="ecell-gallery__eyebrow">ECELL RCPIT / ARCHIVE</span>
-        </div>
         <h2 className="ecell-gallery__title">Beyond the Frame</h2>
         <p className="ecell-gallery__subtext">
           Moments, people and milestones from the E-Cell RCPIT journey.

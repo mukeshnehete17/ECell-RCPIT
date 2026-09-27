@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+import { EffectCoverflow, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
 import './MomentsCoverflow.css';
 
 const SHOWCASE_MOMENTS = [
@@ -98,12 +97,8 @@ export default function MomentsCoverflow() {
     <section className="ecell-showcase-carousel" id="moments">
       <div className="ecell-showcase-container">
         
-        {/* Editorial Section Header */}
+        {/* Editorial Section Header (starts directly with title) */}
         <div className="ecell-showcase-header">
-          <div className="ecell-showcase-eyebrow">
-            <span className="ecell-showcase-dot" />
-            <span>MOMENTS FROM E-CELL RCPIT</span>
-          </div>
           <h2 className="ecell-showcase-title">
             Moments That <span className="ecell-showcase-accent">Move Us</span>
           </h2>
@@ -133,13 +128,7 @@ export default function MomentsCoverflow() {
               modifier: 1,
               slideShadows: false,
             }}
-            pagination={{
-              el: '.ecell-coverflow-pagination',
-              clickable: true,
-              bulletClass: 'ecell-coverflow-bullet',
-              bulletActiveClass: 'ecell-coverflow-bullet-active',
-            }}
-            modules={[EffectCoverflow, Pagination, Autoplay]}
+            modules={[EffectCoverflow, Autoplay]}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
@@ -168,9 +157,6 @@ export default function MomentsCoverflow() {
               );
             })}
           </Swiper>
-
-          {/* Pagination */}
-          <div className="ecell-coverflow-pagination" />
         </div>
 
       </div>

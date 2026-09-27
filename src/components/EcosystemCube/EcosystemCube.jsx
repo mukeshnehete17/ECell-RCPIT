@@ -103,9 +103,6 @@ export default function EcosystemCube() {
 
       {/* Section Header */}
       <div className="ecosystem-header">
-        <div className="ecosystem-eyebrow">
-          <span>OUR ECOSYSTEM</span>
-        </div>
         <h2 className="ecosystem-title">
           Turn Ideas Into <span className="text-[#16A34A]">Impact</span>
         </h2>

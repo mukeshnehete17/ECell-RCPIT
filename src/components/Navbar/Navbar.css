@@ -1,84 +1,150 @@
 /* ============================================================
-   LIQUID GLASS NAVBAR — E-CELL RCPIT
+   PREMIUM GLASS DYNAMIC ISLAND NAVBAR — E-CELL RCPIT
    ============================================================ */
 
 .ecell-liquid-navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 50;
-  width: 100%;
   font-family: var(--font-sans, "Inter", sans-serif);
-  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   -webkit-tap-highlight-color: transparent;
+  transform-origin: center top;
+  box-sizing: border-box;
+  transition:
+    top 0.5s ease,
+    width 0.5s ease,
+    max-width 0.5s ease,
+    border-radius 0.5s ease,
+    background 0.5s ease,
+    backdrop-filter 0.5s ease,
+    -webkit-backdrop-filter 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease,
+    padding 0.5s ease;
 }
 
-/* Normal / Unscrolled State — Subtle Translucent Glass floating over Hero */
+/* STATE 1: HERO STATE (Full Width Transparent Glass Navbar) */
 .ecell-liquid-navbar.is-normal {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  backdrop-filter: blur(14px) saturate(115%);
-  -webkit-backdrop-filter: blur(14px) saturate(115%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Scrolled State — Refined Transparent Glass */
+/* STATE 2: SCROLL STATE (Floating Dynamic Island Style Capsule) */
 .ecell-liquid-navbar.is-scrolled {
-  background: rgba(15, 18, 20, 0.65);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  top: 14px;
+  width: min(92%, 1100px);
+  max-width: 1100px;
+  border-radius: 999px;
+  background: rgba(12, 16, 22, 0.68);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Inner Layout Container */
+.ecell-navbar-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 68px;
+  transition:
+    height 0.5s ease,
+    padding 0.5s ease;
+}
+
+.ecell-liquid-navbar.is-scrolled .ecell-navbar-inner {
+  max-width: 100%;
+  padding: 0 24px;
+  height: 56px;
 }
 
 /* Nav Links Styling */
 .ecell-nav-link {
   position: relative;
-  padding: 4px 0;
-  font-size: 11px;
+  padding: 6px 2px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.90);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.2s ease, opacity 0.2s ease, text-shadow 0.2s ease;
   user-select: none;
+  white-space: nowrap;
+}
+
+.ecell-liquid-navbar.is-scrolled .ecell-nav-link {
+  font-size: 11px;
+  letter-spacing: 0.12em;
 }
 
 .ecell-nav-link:hover {
-  color: var(--color-primary-green, #16A34A);
+  color: #ffffff;
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
 .ecell-nav-link.is-active {
   color: #ffffff;
-}
-
-/* Active Dot Indicator */
-.ecell-nav-active-dot {
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--color-primary-green, #16A34A);
-  box-shadow: 0 0 6px rgba(22, 163, 74, 0.5);
+  font-weight: 700;
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 /* Mobile Glass Dropdown */
 .ecell-mobile-glass-menu {
-  background: rgba(15, 18, 20, 0.88);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 16, 22, 0.90);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.ecell-liquid-navbar.is-scrolled .ecell-mobile-glass-menu {
+  border-radius: 20px;
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .ecell-navbar-inner {
+    padding: 0 20px;
+    height: 60px;
+  }
+  
+  .ecell-liquid-navbar.is-scrolled .ecell-navbar-inner {
+    padding: 0 18px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecell-liquid-navbar.is-scrolled {
+    top: 10px;
+    width: calc(100% - 24px);
+  }
+
+  .ecell-navbar-inner {
+    padding: 0 14px;
+    height: 56px;
+  }
+
+  .ecell-liquid-navbar.is-scrolled .ecell-navbar-inner {
+    padding: 0 14px;
+    height: 50px;
+  }
 }

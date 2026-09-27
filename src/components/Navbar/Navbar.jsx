@@ -22,17 +22,24 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const next = window.scrollY > 20;
-      // Bail out when unchanged — avoids a re-render on every scroll tick
-      setScrolled((prev) => (prev === next ? prev : next));
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const next = window.scrollY > 60;
+          setScrolled((prev) => (prev === next ? prev : next));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const renderNavLinks = (links) => (
-    <nav className="hidden lg:flex items-center gap-7 xl:gap-8">
+    <nav className="hidden lg:flex items-center gap-5 xl:gap-6 2xl:gap-7">
       {links.map((item) => {
         const isActive = activeSection === item.href.replace('#', '');
         return (
@@ -43,7 +50,6 @@ export default function Navbar() {
             className={`ecell-nav-link ${isActive ? 'is-active' : ''}`}
           >
             <span>{item.label}</span>
-            {isActive && <span className="ecell-nav-active-dot" />}
           </a>
         );
       })}
@@ -52,7 +58,7 @@ export default function Navbar() {
 
   return (
     <header className={`ecell-liquid-navbar ${scrolled ? 'is-scrolled' : 'is-normal'}`}>
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-[68px] flex items-center justify-between">
+      <div className="ecell-navbar-inner flex items-center justify-between">
         
         {/* Left Links (Desktop) */}
         {renderNavLinks(NAV_LEFT)}
@@ -61,12 +67,12 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={() => setActiveSection('home')}
-          className="flex items-center gap-3 group select-none transition-opacity duration-150 hover:opacity-90"
+          className="flex items-center gap-2.5 sm:gap-3 group select-none transition-opacity duration-150 hover:opacity-90 shrink-0"
         >
           <img
             src="/assets/logo/ecell-logo.png"
             alt="E-Cell RCPIT logo"
-            className="w-9 sm:w-10 h-auto object-contain shrink-0"
+            className="w-8 sm:w-9 md:w-10 h-auto object-contain shrink-0 transition-all duration-300"
             width="256"
             height="256"
             fetchpriority="high"
@@ -77,7 +83,7 @@ export default function Navbar() {
             <span className="font-bold text-xs sm:text-[13px] tracking-wide text-white leading-tight">
               Entrepreneurship Cell
             </span>
-            <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] text-white/65 uppercase">
+            <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] text-white/70 uppercase">
               RCPIT
             </span>
           </div>
@@ -90,7 +96,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden w-10 h-10 flex items-center justify-center text-white/90 hover:text-[#16A34A] focus:outline-none transition-colors"
+          className="lg:hidden w-10 h-10 flex items-center justify-center text-white/90 hover:text-white focus:outline-none transition-colors"
           aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={isOpen}
         >
@@ -120,12 +126,11 @@ export default function Navbar() {
                   }}
                   className={`py-2.5 px-3 text-xs font-semibold tracking-wider uppercase rounded-md transition-colors flex items-center justify-between ${
                     isActive
-                      ? 'text-white bg-white/[0.08]'
-                      : 'text-white/75 hover:text-[#16A34A] hover:bg-white/[0.04]'
+                      ? 'text-white bg-white/[0.12] font-bold'
+                      : 'text-white/75 hover:text-white hover:bg-white/[0.06]'
                   }`}
                 >
                   <span>{item.label}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]" />}
                 </a>
               );
             })}
